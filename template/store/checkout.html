@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .checkout-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .cart-item .details {
+            flex-grow: 1;
+        }
+
+        .cart-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .cart-item .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .total-amount {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #0056b3;
+            box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+
+        {% for item in cart_items %}
+        <div class="cart-item">
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            <div class="details">
+                <p><strong>{{ item.product.name }}</strong></p>
+                <p>₹{{ item.product.price }} x {{ item.quantity }}</p>
+            </div>
+            <p class="price">₹{{ item.product.price|floatformat:2 }}</p>
+        </div>
+        {% endfor %}
+
+        <p class="total-amount">Total Amount: ₹{{ total_price|floatformat:2 }}</p>
+
+        <!-- Proceed to Payment Button -->
+        <a href="{% url 'place_order' %}" class="checkout-btn">Proceed to Payment</a>
+    </div>
+
+</body>
+</html>
