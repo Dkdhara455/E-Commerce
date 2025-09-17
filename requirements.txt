@@ -1,3 +1,5 @@
-django
+Django>=5.0
+gunicorn
+whitenoise
 djangorestframework
 python 3.9
