@@ -1,5 +1,4 @@
 djangorestframework
-Django
 django
 gunicorn
 whitenoise
