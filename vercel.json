@@ -4,17 +4,11 @@
     {
       "src": "ecommerce/wsgi.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python" }
+      "config": { "runtime": "python3.9" }
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "ecommerce/wsgi.py"
-    }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "ecommerce/wsgi.py" }
   ]
 }

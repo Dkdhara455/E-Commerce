@@ -1,5 +1,6 @@
 djangorestframework
-Django>=5.0,<6.0
+Django
+django
 gunicorn
 whitenoise
 psycopg2-binary
