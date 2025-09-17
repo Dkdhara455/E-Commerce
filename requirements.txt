@@ -1,5 +1,7 @@
 Django>=5.0
+djangorestframework
 gunicorn
 whitenoise
-djangorestframework
-python 3.9
+psycopg2
+python-decouple
+
